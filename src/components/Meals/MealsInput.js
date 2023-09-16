@@ -18,7 +18,7 @@ const MealsInput = () => {
             }}
           />
         </div>
-        <button className="px-2 py-1 bg-red-900 text-white rounded-md hover:bg-red-300 hover:text-red-900">
+        <button className="px-2 py-1 text-sm bg-red-900 text-white rounded-md hover:bg-red-300 hover:text-red-900">
           + Add
         </button>
       </form>
