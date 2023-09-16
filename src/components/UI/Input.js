@@ -8,7 +8,7 @@ const Input = (props) => {
       </label>
       <input
         {...props.input}
-        className="border rounded px-3 w-16 text-red-700 focus:outline-none focus:ring focus:border-red-300"
+        className="border rounded px-3 w-16 text-black-700 focus:outline-none focus:ring focus:border-red-300"
       />
     </div>
   );
