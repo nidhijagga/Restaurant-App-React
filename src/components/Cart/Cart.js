@@ -1,15 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
+import { CartContext } from "../../store/cartContext";
 
 const Cart = ({ isOpen, onClose }) => {
-  // Dummy cart data
-  const dummyCartItems = [
-    { id: 1, name: "Product 1", price: 100 },
-    { id: 2, name: "Product 2", price: 150 },
-    // Add more dummy items as needed
-  ];
-
+  const cartContext = useContext(CartContext);
+  const cartItems = cartContext.cartItems;
   // Calculate the total price
-  const totalPrice = dummyCartItems.reduce((total, item) => total + item.price, 0);
+  const totalPrice = cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
 
   return (
     <div>
@@ -18,9 +14,11 @@ const Cart = ({ isOpen, onClose }) => {
           <div className="bg-white p-4 w-1/2 rounded-lg">
             <h2 className="text-black text-2xl font-semibold mb-4">Your Cart</h2>
             <ul>
-              {dummyCartItems.map((item) => (
-                <li key={item.id} className="mb-2 text-black">
-                  {item.name} - Rs. {item.price}
+              {cartItems.map((item) => (
+                <li key={item.id} className="mb-2 text-black flex justify-between items-center">
+                  <span className="font-semibold w-2/5">{item.name}</span>
+                  <span className="text-gray-600 w-1/5">X {item.quantity}</span>
+                  <span className="text-red-500 w-2/5 text-right">Rs. {item.price * item.quantity}</span>
                 </li>
               ))}
             </ul>
