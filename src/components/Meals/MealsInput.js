@@ -11,16 +11,18 @@ const MealsInput = ({ mealItem }) => {
   };
 
   const addToCart = () => {
+    const quantity = parseInt(quantityInput, 10);
     cartContext.setCartItems((prevCartItems) => [
       ...prevCartItems,
       {
         id: mealItem.id,
         name: mealItem.name,
         price: mealItem.price,
-        quantity: quantityInput,
+        quantity: quantity, // Use the parsed quantity
       },
     ]);
   };
+  
 
   return (
     <div className="flex items-center justify-end">

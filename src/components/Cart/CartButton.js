@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import Cart from "./Cart"; // Import the Cart component
+import React, { useContext, useState } from "react";
+import Cart from "./Cart"; 
+import { CartContext } from "../../store/cartContext";
 
 const CartButton = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const cartContext = useContext(CartContext);
 
   // Function to open the cart
   const openCart = () => {
@@ -22,7 +24,7 @@ const CartButton = () => {
         onClick={isCartOpen ? closeCart : openCart}
       >
         <button>🛒 Cart</button>
-        <span className="text-lg bg-red-950 rounded-md px-2 ">0</span>{" "}
+        <span className="text-md bg-red-950 rounded-md px-2 ">{cartContext.cartItems.length}</span>{" "}
       </div>
 
       {/* Cart overlay */}
